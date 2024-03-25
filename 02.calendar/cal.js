@@ -1,3 +1,7 @@
+import minimist from "minimist";
+const argv = minimist(process.argv.slice(2));
+console.log(argv);
+
 const now = new Date();
 
 const year = String(now.getFullYear());
