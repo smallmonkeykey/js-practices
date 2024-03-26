@@ -12,7 +12,7 @@ const end_of_month = new Date(year, month, 0);
 const total_day = end_of_month.getDate();
 
 console.log("      " + month + "月" + "  " + year);
-console.log(" 日 月 火 水 木 金 土");
+console.log("日 月 火 水 木 金 土");
 
 let day = 1;
 for (let i = 0; i < total_day + day_of_week; i++) {
@@ -22,8 +22,8 @@ for (let i = 0; i < total_day + day_of_week; i++) {
     if (i % 7 === 0) {
       process.stdout.write("\n");
     }
-    process.stdout.write(" ");
     process.stdout.write(String(day).padStart(2, " "));
+    process.stdout.write(" ");
 
     day += 1;
   }
