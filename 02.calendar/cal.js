@@ -28,3 +28,5 @@ for (let i = 0; i < total_day + day_of_week; i++) {
     day += 1;
   }
 }
+
+console.log();
