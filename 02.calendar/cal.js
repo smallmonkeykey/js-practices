@@ -19,7 +19,7 @@ for (let i = 0; i < total_day + day_of_week; i++) {
   if (i < day_of_week) {
     process.stdout.write("   ");
   } else {
-    if (i % 7 == 0) {
+    if (i % 7 === 0) {
       process.stdout.write("\n");
     }
     process.stdout.write(" ");
