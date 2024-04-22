@@ -4,8 +4,8 @@ const argv = minimist(process.argv.slice(2));
 
 const now = new Date();
 
-const year = argv.y ?? String(now.getFullYear());
-const month = argv.m ?? String(now.getMonth() + 1);
+const year = argv.y ?? now.getFullYear();
+const month = argv.m ?? now.getMonth() + 1;
 
 const first_of_month = new Date(year, month - 1, 1, 23, 59, 59, 999);
 const day_of_week = first_of_month.getDay();
