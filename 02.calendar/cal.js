@@ -12,22 +12,22 @@ const dayOfWeek = firstOfMonth.getDay();
 const endOfMonth = new Date(year, month, 0);
 const totalDay = endOfMonth.getDate();
 
-const blank = "   "
+const blank = "   ";
 
 console.log(`      ${month}月 ${year}`);
 console.log(`日 月 火 水 木 金 土`);
 
-for (let i=0; i<dayOfWeek; i++) {
-    process.stdout.write(blank)
+for (let i = 0; i < dayOfWeek; i++) {
+  process.stdout.write(blank);
 }
 
-for (let i=1; i<totalDay+1; i++) {
+for (let i = 1; i < totalDay + 1; i++) {
   process.stdout.write(String(i).padStart(2));
-    if ((i + dayOfWeek) %7===0) {
+  if ((i + dayOfWeek) % 7 === 0) {
     process.stdout.write("\n");
   } else {
     process.stdout.write(" ");
-    }
+  }
 }
 
 console.log();
