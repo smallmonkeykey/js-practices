@@ -9,7 +9,7 @@ const now = new Date();
 const year = argv.y ?? now.getFullYear();
 const month = argv.m ?? now.getMonth() + 1;
 
-const firstOfMonth = new Date(year, month - 1, 1, 23, 59, 59, 999);
+const firstOfMonth = new Date(year, month - 1, 1);
 const dayOfWeek = firstOfMonth.getDay();
 const endOfMonth = new Date(year, month, 0);
 const totalDay = endOfMonth.getDate();
