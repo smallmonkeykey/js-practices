@@ -23,9 +23,7 @@ for (let i = 1; i < endOfMonth.getDate() + 1; i++) {
   process.stdout.write(String(i).padStart(2));
   if ((i + firstOfMonth.getDay()) % 7 === 0) {
     process.stdout.write("\n");
-  } else if (i === endOfMonth.getDate()) {
-    break;
-  } else {
+  } else if (i < endOfMonth.getDate()) {
     process.stdout.write(" ");
   }
 }
