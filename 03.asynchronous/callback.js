@@ -15,10 +15,13 @@ db.run(createTableQuery, function (err) {
                 rows.forEach((row) => {
                 console.log(`id: ${row.id}, title:${row.title}`);
                 });
+            
+            db.run('DROP TABLE books', function (err) {
+                console.log("テーブルを削除しました");
+            })
         });
     });
     
 });
 
 db.close();
-
