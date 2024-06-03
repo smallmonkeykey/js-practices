@@ -6,19 +6,19 @@ const createTableQuery = `CREATE TABLE books(
     title VARCHAR NOT NULL UNIQUE
 )`;
 
-db.run(createTableQuery, function (err) {
+db.run(createTableQuery, function () {
   db.run(
     "INSERT INTO books (id, title) VALUES (?, ?)",
     ["1", "吾輩は猫である"],
-    function (err) {
+    function () {
       console.log(`id: ${this.lastID}`);
 
-      db.all("SELECT * FROM books", function (err, rows) {
+      db.all("SELECT * FROM books", function (rows) {
         rows.forEach((row) => {
           console.log(`id: ${row.id}, title:${row.title}`);
         });
 
-        db.run("DROP TABLE books", function (err) {
+        db.run("DROP TABLE books", function () {
           console.log("テーブルを削除しました");
         });
       });

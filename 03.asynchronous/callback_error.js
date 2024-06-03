@@ -16,7 +16,7 @@ db.run(createTableQuery, function (err) {
       if (err) {
         console.error(err.message);
 
-        db.all("SELECT * FROM book WHERE id = 1", function (err, rows) {
+        db.all("SELECT * FROM book WHERE id = 1", function (err) {
           if (err) {
             console.error(err.message);
           }
