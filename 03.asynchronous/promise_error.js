@@ -1,4 +1,4 @@
-import { createDatabase, runAsync, allAsync, closeAsync } from "./async.js";
+import { createDatabase, runAsync, allAsync, closeAsync } from "./function.js";
 
 const db = createDatabase();
 
