@@ -1,7 +1,11 @@
 import sqlite3 from "sqlite3";
-const db = new sqlite3.Database(":memory:");
 
-function runAsync(sql, values) {
+function createDatabase() {
+    const db = new sqlite3.Database(':memory:');
+    return db;
+}
+
+function runAsync(db,sql, values) {
     return new Promise((resolve, reject) => {
         db.run(sql, values, function (err) {
             if (err) {
@@ -13,7 +17,7 @@ function runAsync(sql, values) {
     })
 }
 
-function allAsync(sql) {
+function allAsync(db, sql) {
     return new Promise((resolve, reject) => {
         db.all(sql, (err, rows) => {
             if (err) {
@@ -25,7 +29,7 @@ function allAsync(sql) {
     })
 }
 
-function closeAsync(sql) {
+function closeAsync(db, sql) {
 	return new Promise((resolve, reject) => {
 		db.close((err) => {
 			if (err) {
@@ -37,27 +41,29 @@ function closeAsync(sql) {
 	})
 }
 
+const db = createDatabase();
+
 const createTableQuery = `CREATE TABLE books(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL UNIQUE
 )`;
 
-runAsync(createTableQuery)
+runAsync(db, createTableQuery)
     .then(() => {
-      return runAsync("INSERT INTO books (title) VALUES (?)",["吾輩は猫である"])
+      return runAsync(db, "INSERT INTO books (title) VALUES (?)",["吾輩は猫である"])
     })
     .then((id) => {
       console.log(id)
-      return allAsync("SELECT id, title FROM books")
+      return allAsync(db, "SELECT id, title FROM books")
     })
     .then((rows) => {
       rows.forEach((row) => {
 				console.log(`id: ${row.id}, title:${row.title}`);
 			});
-			return runAsync("DROP TABLE books")
+			return runAsync(db, "DROP TABLE books")
 		})
 	.then(() => {
-		return closeAsync()
+		return closeAsync(db)
 	})
 
 export {runAsync, allAsync, closeAsync}; 
