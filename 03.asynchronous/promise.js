@@ -59,3 +59,5 @@ runAsync(createTableQuery)
 	.then(() => {
 		return closeAsync()
 	})
+
+export {runAsync, allAsync, closeAsync}; 
