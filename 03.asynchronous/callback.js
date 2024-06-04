@@ -13,17 +13,15 @@ db.run(createTableQuery, function () {
     function () {
       console.log(`id: ${this.lastID}`);
 
-      db.all("SELECT * FROM books", function (rows) {
+      db.all("SELECT * FROM books", (err, rows) => {
         rows.forEach((row) => {
           console.log(`id: ${row.id}, title:${row.title}`);
         });
 
         db.run("DROP TABLE books", function () {
-          console.log("テーブルを削除しました");
+          db.close();
         });
       });
     },
   );
 });
-
-db.close();

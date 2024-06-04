@@ -25,12 +25,10 @@ db.run(createTableQuery, function (err) {
             if (err) {
               console.error(err.message);
             }
-            console.log("テーブルを削除しました");
+            db.close();
           });
         });
       }
     },
   );
 });
-
-db.close();
