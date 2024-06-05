@@ -11,8 +11,21 @@ async function operateSqlite3() {
   try {
     await runAsync(db, createTableQuery);
 
-    const lastId = await runAsync(db, "INSERT INTO books (title) VALUES (?)", ["吾輩は猫である",]);
-    console.log(lastId);
+      try {
+          await runAsync(db, "INSERT INTO book (title) VALUES (?)", ["吾輩は猫である",]);
+          console.log(lastId);
+      } catch (err) {
+          console.log(err.message)
+      }
+
+      try {
+           const rows = await allAsync(db, "SELECT id, title FROM boo");
+           rows.forEach((row) => {
+           console.log(`id: ${row.id}, title:${row.title}`);
+           });
+      } catch (err) {
+          console.log(err.message)
+      }
 
     const rows = await allAsync(db, "SELECT id, title FROM books");
     rows.forEach((row) => {
@@ -23,7 +36,6 @@ async function operateSqlite3() {
     await closeAsync(db);
 
   } catch {
-    
   }
 }
 
