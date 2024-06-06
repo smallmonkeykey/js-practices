@@ -9,22 +9,15 @@ db.run("CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR N
       "吾輩は猫である",
     ],
      (err) => {
-      if (err) {
         console.error(err.message);
 
         db.all("SELECT * FROM book WHERE id = 1", function (err) {
-          if (err) {
-            console.error(err.message);
-          }
+          console.error(err.message);
 
           db.run("DROP TABLE books", function (err) {
-            if (err) {
-              console.error(err.message);
-            }
             db.close();
           });
         });
-      }
     },
   );
 });
