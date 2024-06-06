@@ -6,7 +6,7 @@ db.run("CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR N
     "INSERT INTO books(title) VALUES(?)", [
     "吾輩は猫である",
   ],
-    function () {
+     () => {
       console.log(`id: ${this.lastID}`);
 
       db.all("SELECT * FROM books", (err, rows) => {

@@ -8,7 +8,7 @@ db.run("CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR N
       "INSERT INTO boo(title) VALUES(?)", [
       "吾輩は猫である",
     ],
-    function (err) {
+     (err) => {
       if (err) {
         console.error(err.message);
 
