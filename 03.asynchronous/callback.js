@@ -11,7 +11,7 @@ db.run("CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR N
 
       db.all("SELECT * FROM books", (unusedVariable, rows) => {
         rows.forEach((row) => {
-          console.log(`id: ${row.id}, title:${row.title}`);
+          console.log(`id: ${row.id}, title: ${row.title}`);
         });
 
         db.run("DROP TABLE books", function () {

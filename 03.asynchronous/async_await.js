@@ -13,7 +13,7 @@ async function operateSqlite3() {
 
     const rows = await allAsync(db, "SELECT id, title FROM books");
     rows.forEach((row) => {
-      console.log(`id: ${row.id}, title:${row.title}`);
+      console.log(`id: ${row.id}, title: ${row.title}`);
     });
   } finally {
     await runAsync(db, "DROP TABLE books");

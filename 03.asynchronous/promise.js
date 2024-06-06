@@ -14,7 +14,7 @@ runAsync(db, "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VAR
   })
   .then((rows) => {
     rows.forEach((row) => {
-      console.log(`id: ${row.id}, title:${row.title}`);
+      console.log(`id: ${row.id}, title: ${row.title}`);
     });
     return runAsync(db, "DROP TABLE books");
   })
