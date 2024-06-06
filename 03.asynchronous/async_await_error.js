@@ -1,7 +1,6 @@
 import { runAsync, allAsync, closeAsync } from "./db_async_functions.js";
 import sqlite3 from "sqlite3";
 
-async function operateSqlite3() {
   const db = new sqlite3.Database(":memory:");
 
   try {
@@ -33,6 +32,4 @@ async function operateSqlite3() {
     await runAsync(db, "DROP TABLE books");
     await closeAsync(db);
   }
-}
 
-operateSqlite3();
