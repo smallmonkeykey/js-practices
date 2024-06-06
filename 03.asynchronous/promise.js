@@ -13,8 +13,8 @@ runAsync(db, createTableQuery)
       "吾輩は猫である",
     ]);
   })
-  .then((id) => {
-    console.log(id);
+  .then((result) => {
+    console.log(`id: ${result.lastID}`);
     return allAsync(db, "SELECT id, title FROM books");
   })
   .then((rows) => {

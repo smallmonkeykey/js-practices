@@ -11,7 +11,7 @@ function runAsync(db, sql, values) {
       if (err) {
         reject(err);
       } else {
-        resolve(this.lastID);
+        resolve(this);
       }
     });
   });
