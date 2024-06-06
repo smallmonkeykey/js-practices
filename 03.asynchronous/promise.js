@@ -17,6 +17,4 @@ runAsync(db, "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VAR
     });
     return runAsync(db, "DROP TABLE books");
   })
-  .then(() => {
-    return closeAsync(db);
-  });
+  .then(() => closeAsync(db));
