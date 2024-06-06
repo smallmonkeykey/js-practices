@@ -1,10 +1,3 @@
-import sqlite3 from "sqlite3";
-
-function createDatabase() {
-  const db = new sqlite3.Database(":memory:");
-  return db;
-}
-
 function runAsync(db, sql, values) {
   return new Promise((resolve, reject) => {
     db.run(sql, values, function (err) {
@@ -41,4 +34,4 @@ function closeAsync(db) {
   });
 }
 
-export { createDatabase, runAsync, allAsync, closeAsync };
+export { runAsync, allAsync, closeAsync };

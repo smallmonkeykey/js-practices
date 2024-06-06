@@ -1,6 +1,7 @@
-import { createDatabase, runAsync, allAsync, closeAsync } from "./db_async_functions.js";
+import { runAsync, allAsync, closeAsync } from "./db_async_functions.js";
+import sqlite3 from "sqlite3";
 
-const db = createDatabase();
+const db = new sqlite3.Database(":memory:");
 
 runAsync(db, "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)")
   .then(() => {
