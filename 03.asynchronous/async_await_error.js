@@ -9,20 +9,20 @@ try {
     "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)",
   );
 
-  try {
-    await runAsync(db, "INSERT INTO boo(title) VALUES(?)", [
-      "吾輩は猫である",
-    ]);
-  } catch (err) {
-    console.log(err.message);
-  }
+  await runAsync(db, "INSERT INTO boo(title) VALUES(?)", [ "吾輩は猫である",]);
+} catch (err) {
+    console.error(err.message);
+}
 
-  try {
-    await allAsync(db, "SELECT id, title FROM book");
-  } catch (err) {
-    console.log(err.message);
-  }
-} finally {
+try {
+  await allAsync(db, "SELECT id, title FROM book")
+} catch (err) {
+    console.error(err.message);
+}
+
+try {
   await runAsync(db, "DROP TABLE books");
   await closeAsync(db);
+} catch (err) {
+    console.error(err.message);
 }
