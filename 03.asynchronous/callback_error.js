@@ -10,8 +10,9 @@ db.run(createTableQuery, function (err) {
   if (err) console.error(err.message);
 
   db.run(
-    "INSERT INTO books (title) VALUES (?, ?)",
-    ["吾輩は猫である"],
+      "INSERT INTO boo (title) VALUES (?)", [
+      "吾輩は猫である",
+    ],
     function (err) {
       if (err) {
         console.error(err.message);
