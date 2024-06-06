@@ -3,13 +3,8 @@ import { createDatabase, runAsync, allAsync, closeAsync } from "./db_async_funct
 async function operateSqlite3() {
   const db = createDatabase();
 
-  const createTableQuery = `CREATE TABLE books(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL UNIQUE
-   )`;
-
   try {
-    await runAsync(db, createTableQuery);
+    await runAsync(db, "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)");
 
     try {
       const lastId = await runAsync(db, "INSERT INTO boo (title) VALUES (?)", [

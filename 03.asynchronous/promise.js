@@ -2,12 +2,7 @@ import { createDatabase, runAsync, allAsync, closeAsync } from "./db_async_funct
 
 const db = createDatabase();
 
-const createTableQuery = `CREATE TABLE books(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL UNIQUE
-)`;
-
-runAsync(db, createTableQuery)
+runAsync(db, "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)")
   .then(() => {
     return runAsync(db, "INSERT INTO books (title) VALUES (?)", [
       "吾輩は猫である",
