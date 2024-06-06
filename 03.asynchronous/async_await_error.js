@@ -10,27 +10,18 @@ try {
   );
 
   try {
-    const lastId = await runAsync(db, "INSERT INTO boo(title) VALUES(?)", [
+    await runAsync(db, "INSERT INTO boo(title) VALUES(?)", [
       "吾輩は猫である",
     ]);
-    console.log(lastId);
   } catch (err) {
     console.log(err.message);
   }
 
   try {
-    const rows = await allAsync(db, "SELECT id, title FROM book");
-    rows.forEach((row) => {
-      console.log(`id: ${row.id}, title: ${row.title}`);
-    });
+    await allAsync(db, "SELECT id, title FROM book");
   } catch (err) {
     console.log(err.message);
   }
-
-  const rows = await allAsync(db, "SELECT id, title FROM books");
-  rows.forEach((row) => {
-    console.log(`id: ${row.id}, title:${row.title}`);
-  });
 } finally {
   await runAsync(db, "DROP TABLE books");
   await closeAsync(db);
