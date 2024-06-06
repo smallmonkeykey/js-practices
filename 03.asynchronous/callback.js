@@ -9,7 +9,7 @@ db.run("CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR N
      () => {
       console.log(`id: ${this.lastID}`);
 
-      db.all("SELECT * FROM books", (err, rows) => {
+      db.all("SELECT * FROM books", (unusedVariable, rows) => {
         rows.forEach((row) => {
           console.log(`id: ${row.id}, title:${row.title}`);
         });
