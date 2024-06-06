@@ -5,7 +5,7 @@ db.run("CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR N
   if (err) console.error(err.message);
 
   db.run(
-      "INSERT INTO boo (title) VALUES (?)", [
+      "INSERT INTO boo(title) VALUES(?)", [
       "吾輩は猫である",
     ],
     function (err) {

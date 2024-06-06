@@ -7,7 +7,7 @@ async function operateSqlite3() {
     await runAsync(db, "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)");
 
     try {
-      const lastId = await runAsync(db, "INSERT INTO boo (title) VALUES (?)", [
+      const lastId = await runAsync(db, "INSERT INTO boo(title) VALUES(?)", [
         "吾輩は猫である",
       ]);
       console.log(lastId);
