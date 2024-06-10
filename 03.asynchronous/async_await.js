@@ -9,7 +9,7 @@ const insertTitleQuery = "INSERT INTO books(title) VALUES(?)";
 const selectBookQuery = "SELECT id, title FROM books";
 const dropTableQuery = "DROP TABLE books";
 
-try {
+(async () => {
   await runAsync(db, createTableQuery);
 
   const result = await runAsync(db, insertTitleQuery, ["吾輩は猫である"]);
@@ -21,6 +21,4 @@ try {
   });
   await runAsync(db, dropTableQuery);
   await closeAsync(db);
-} catch (err) {
-  console.error(err.message);
-}
+})();
