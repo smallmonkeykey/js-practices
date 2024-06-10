@@ -17,7 +17,7 @@ db.run(createTableQuery, () => {
         console.log(`id: ${row.id}, title: ${row.title}`);
       });
 
-      db.run(dropTableQuery, function () {
+      db.run(dropTableQuery, () => {
         db.close();
       });
     });
