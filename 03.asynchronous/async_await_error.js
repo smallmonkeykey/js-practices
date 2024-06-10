@@ -9,22 +9,21 @@ const insertTitleErrorQuery = "INSERT INTO boo(title) VALUES(?)";
 const selectBookErrorQuery = "SELECT id, title FROM book";
 const dropTableQuery = "DROP TABLE books";
 
-try {
+(async () => {
   await runAsync(db, createTableQuery);
-  await runAsync(db, insertTitleErrorQuery, ["吾輩は猫である"]);
-} catch (err) {
-  console.error(err.message);
-}
 
-try {
-  await allAsync(db, selectBookErrorQuery);
-} catch (err) {
-  console.error(err.message);
-}
+  try {
+    await runAsync(db, insertTitleErrorQuery, ["吾輩は猫である"]);
+  } catch (err) {
+    console.error(err.message);
+  }
 
-try {
+  try {
+    await allAsync(db, selectBookErrorQuery);
+  } catch (err) {
+    console.error(err.message);
+  }
+
   await runAsync(db, dropTableQuery);
   await closeAsync(db);
-} catch (err) {
-  console.error(err.message);
-}
+})();
