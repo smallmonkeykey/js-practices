@@ -6,7 +6,7 @@ const db = new sqlite3.Database(":memory:");
 try {
   await runAsync(
     db,
-    "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)",
+    "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT,title VARCHAR NOT NULL UNIQUE)",
   );
 
   const result = await runAsync(db, "INSERT INTO books(title) VALUES(?)", [
@@ -18,7 +18,8 @@ try {
   rows.forEach((row) => {
     console.log(`id: ${row.id}, title: ${row.title}`);
   });
-} finally {
   await runAsync(db, "DROP TABLE books");
   await closeAsync(db);
+} catch (err) {
+  console.error(err.message);
 }

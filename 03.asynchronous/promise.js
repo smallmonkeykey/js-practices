@@ -5,7 +5,7 @@ const db = new sqlite3.Database(":memory:");
 
 runAsync(
   db,
-  "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)",
+  "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT,title VARCHAR NOT NULL UNIQUE)",
 )
   .then(() =>
     runAsync(db, "INSERT INTO books(title) VALUES(?)", ["吾輩は猫である"]),
