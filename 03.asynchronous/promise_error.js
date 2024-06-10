@@ -3,19 +3,20 @@ import sqlite3 from "sqlite3";
 
 const db = new sqlite3.Database(":memory:");
 
-runAsync(
-  db,
-  "CREATE TABLE books(id INTEGER AUTO_INCREMENT PRIMARY KEY,title VARCHAR NOT NULL UNIQUE)",
-)
-  .then(() =>
-    runAsync(db, "INSERT INTO boo(title) VALUES(?)", ["吾輩は猫である"]),
-  )
+const createTableQuery =
+  "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR NOT NULL UNIQUE)";
+const insertTitleErrorQuery = "INSERT INTO boo(title) VALUES(?)";
+const selectBookErrorQuery = "SELECT id, title FROM book";
+const dropTableQuery = "DROP TABLE books";
+
+runAsync(db, createTableQuery)
+  .then(() => runAsync(db, insertTitleErrorQuery, ["吾輩は猫である"]))
   .catch((err) => {
     console.error(err.message);
-    return allAsync(db, "SELECT id, title FROM book");
+    return allAsync(db, selectBookErrorQuery);
   })
   .catch((err) => {
     console.error(err.message);
-    return runAsync(db, "DROP TABLE books");
+    return runAsync(db, dropTableQuery);
   })
   .then(() => closeAsync(db));
