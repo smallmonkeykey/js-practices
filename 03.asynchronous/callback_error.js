@@ -12,7 +12,7 @@ db.run(createTableQuery, () => {
   db.run(insertTitleErrorQuery, ["吾輩は猫である"], (err) => {
     console.error(err.message);
 
-    db.all(selectBookErrorQuery, function (err) {
+    db.all(selectBookErrorQuery, (err) => {
       console.error(err.message);
 
       db.run(dropTableQuery, () => {
