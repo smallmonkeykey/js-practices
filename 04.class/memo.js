@@ -1,17 +1,36 @@
 import readline from 'readline';
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+class ReceiveStdin {
+  getOption() {
+    return process.argv[2];
+  }
 
-let memoLines = [];
+  convertInput() {
+    return new Promise((resolve) => {
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
 
-rl.on('line', (line) => {
-	memoLines.push(line);
-});
+      let memoLines = [];
 
-rl.on('close', () => {
-    console.log(memoLines);
-});
+      rl.on("line", (line) => {
+        memoLines.push(line);
+      });
 
+      rl.on("close", () => {
+        resolve(memoLines);
+      });
+    });
+  }
+
+  async convertInputAsync() {
+    try {
+      const memoLines = await this.convertInput();
+      console.log(memoLines);
+      return memoLines;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
