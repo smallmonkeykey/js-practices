@@ -24,11 +24,7 @@ export default class MemoDataBase {
   }
 
   async deleteMemo(memoId) {
-    const result = await runAsync(
-      this.db,
-      `DELETE FROM memos WHERE id = ${memoId}`,
-    );
-    console.log(result);
+    await runAsync(this.db, `DELETE FROM memos WHERE id = ${memoId}`);
   }
 
   async getAllMemosDate() {

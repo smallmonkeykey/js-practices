@@ -33,8 +33,13 @@ async function main() {
   if (option == "-d") {
     const memoDataBase = await new MemoDataBase();
     const memoAllDate = await memoDataBase.getAllMemosDate();
-    const displayingMemo = await new Display(memoAllDate);
-    displayingMemo.deleteMemos();
+
+    if (Object.keys(memoAllDate).length === 0) {
+      console.log("メモを入力してください");
+    } else {
+      const displayingMemo = await new Display(memoAllDate);
+      displayingMemo.deleteMemos();
+    }
   }
 }
 
