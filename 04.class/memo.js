@@ -1,6 +1,6 @@
-import readline from 'readline';
+import readline from "readline";
 
-class ReceiveStdin {
+export default class ReceiveStdin {
   getOption() {
     return process.argv[2];
   }
@@ -26,9 +26,7 @@ class ReceiveStdin {
 
   async convertInputAsync() {
     try {
-      const memoLines = await this.convertInput();
-      console.log(memoLines);
-      return memoLines;
+      return await this.convertInput();
     } catch (err) {
       console.error(err);
     }
