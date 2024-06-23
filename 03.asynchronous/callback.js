@@ -12,7 +12,7 @@ db.run(createTableQuery, () => {
   db.run(insertTitleQuery, ["吾輩は猫である"], function () {
     console.log(`id: ${this.lastID}`);
 
-    db.all(selectBookQuery, (unusedError, rows) => {
+    db.all(selectBookQuery, (_, rows) => {
       rows.forEach((row) => {
         console.log(`id: ${row.id}, title: ${row.title}`);
       });
