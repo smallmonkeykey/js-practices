@@ -15,13 +15,21 @@ const dropTableQuery = "DROP TABLE books";
   try {
     await runAsync(db, insertTitleErrorQuery, ["吾輩は猫である"]);
   } catch (err) {
-    console.error(err.message);
+    if (err.code === "SQLITE_ERROR") {
+      console.error(err.message);
+    } else {
+      throw err;
+    }
   }
 
   try {
     await allAsync(db, selectBookErrorQuery);
   } catch (err) {
-    console.error(err.message);
+    if (err.code === "SQLITE_ERROR") {
+      console.error(err.message);
+    } else {
+      throw err;
+    }
   }
 
   await runAsync(db, dropTableQuery);
