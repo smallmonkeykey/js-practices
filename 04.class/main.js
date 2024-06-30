@@ -1,4 +1,4 @@
-import ReceiveStdin from "./memo.js";
+import ReceiveStdin from "./ memo_stdin.js";
 import MemoDataBase from "./memo_db.js";
 import Display from "./memo_display.js";
 
@@ -9,9 +9,6 @@ async function main() {
   if (option === undefined) {
     const memoContent = await receivedStdin.convertInputAsync();
     const memoTitle = memoContent[0];
-
-    console.log(memoContent);
-    console.log(memoTitle);
     const memoDataBase = await new MemoDataBase();
     await memoDataBase.insertMemoBody(memoTitle, memoContent);
   }
