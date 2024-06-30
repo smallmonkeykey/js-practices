@@ -26,8 +26,13 @@ async function main() {
   if (option === "-r") {
     const memoDataBase = await new MemoDataBase();
     const memoAllDate = await memoDataBase.getAllMemosDate();
-    const displayingMemo = await new Display(memoAllDate);
-    displayingMemo.referMemos();
+
+    if (Object.keys(memoAllDate).length === 0) {
+      console.log("メモを入力してください");
+    } else {
+      const displayingMemo = await new Display(memoAllDate);
+      displayingMemo.referMemos();
+    }
   }
 
   if (option == "-d") {
