@@ -3,7 +3,7 @@ import { runAsync, allAsync } from "./memo_db_async_function.js";
 
 export default class MemoDataBase {
   constructor() {
-    this.db = new sqlite3.Database("./memo_date.db");
+    this.db = new sqlite3.Database("./memo.db");
 
     this.db.serialize(() => {
       this.db.run(
