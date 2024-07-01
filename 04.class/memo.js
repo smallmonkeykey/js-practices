@@ -17,14 +17,14 @@ async function main() {
 
   if (option === "-l") {
     const memoDataBase = await new MemoDataBase();
-    const memoAllDate = await memoDataBase.getAllMemosDate();
+    const memoAllDate = await memoDataBase.getAllMemos();
     const displayingMemo = await new Display(memoAllDate);
     displayingMemo.displayMemoTitleList();
   }
 
   if (option === "-r") {
     const memoDataBase = await new MemoDataBase();
-    const memoAllDate = await memoDataBase.getAllMemosDate();
+    const memoAllDate = await memoDataBase.getAllMemos();
 
     if (Object.keys(memoAllDate).length === 0) {
       console.log("メモを入力してください");
@@ -36,7 +36,7 @@ async function main() {
 
   if (option == "-d") {
     const memoDataBase = await new MemoDataBase();
-    const memoAllDate = await memoDataBase.getAllMemosDate();
+    const memoAllDate = await memoDataBase.getAllMemos();
 
     if (Object.keys(memoAllDate).length === 0) {
       console.log("メモを入力してください");
