@@ -16,7 +16,7 @@ export default class Display {
       };
     });
 
-    this.memoAllDateChangedKeyNameNew = memoAllDate.map((item) => {
+    this.memoAllDateChangedKeyNameWithoutId = memoAllDate.map((item) => {
       return {
         name: item.title,
         value: item.id,
@@ -48,7 +48,7 @@ export default class Display {
       type: "select",
       name: "memoTitle",
       message: "Choose a memo you want to delete:",
-      choices: this.memoAllDateChangedKeyNameNew,
+      choices: this.memoAllDateChangedKeyNameWithoutId,
       result(names) {
         return this.map(names);
       },
