@@ -3,12 +3,12 @@ import pkg from "enquirer";
 const { prompt } = pkg;
 
 export default class Display {
-  constructor(memoAllDate) {
-    this.memoAllDate = memoAllDate;
+  constructor(allMemos) {
+    this.allMemos = allMemos;
 
-    this.memoTitles = memoAllDate.map((memoDate) => memoDate.title);
+    this.memoTitles = allMemos.map((memoDate) => memoDate.title);
 
-    this.memoAllDateChangedKeyName = memoAllDate.map((item) => {
+    this.allMemosChangedKeyName = allMemos.map((item) => {
       return {
         id: item.id,
         name: item.title,
@@ -16,7 +16,7 @@ export default class Display {
       };
     });
 
-    this.memoAllDateChangedKeyNameWithoutId = memoAllDate.map((item) => {
+    this.allMemosChangedKeyNameWithoutId = allMemos.map((item) => {
       return {
         name: item.title,
         value: item.id,
@@ -25,7 +25,7 @@ export default class Display {
   }
 
   displayMemoTitleList() {
-    this.memoAllDate.forEach((row) => {
+    this.allMemos.forEach((row) => {
       console.log(`${row.title}`);
     });
   }
@@ -35,7 +35,7 @@ export default class Display {
       type: "select",
       name: "memoTitle",
       message: "Choose a note you want to see:",
-      choices: this.memoAllDateChangedKeyName,
+      choices: this.allMemosChangedKeyName,
       result(names) {
         return this.map(names);
       },
@@ -48,7 +48,7 @@ export default class Display {
       type: "select",
       name: "memoTitle",
       message: "Choose a memo you want to delete:",
-      choices: this.memoAllDateChangedKeyNameWithoutId,
+      choices: this.allMemosChangedKeyNameWithoutId,
       result(names) {
         return this.map(names);
       },
