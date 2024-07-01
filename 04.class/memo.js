@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import ReceiveStdin from "./ memo_stdin.js";
 import MemoDataBase from "./memo_db.js";
 import Display from "./memo_display.js";
