@@ -13,7 +13,7 @@ await runAsync(db, createTableQuery);
 try {
   await runAsync(db, insertBookErrorQuery, ["吾輩は猫である"]);
 } catch (err) {
-  if (err.code === "SQLITE_ERROR") {
+  if (err instanceof Error && err.code === "SQLITE_ERROR") {
     console.error(err.message);
   } else {
     throw err;
@@ -23,7 +23,7 @@ try {
 try {
   await allAsync(db, selectBookErrorQuery);
 } catch (err) {
-  if (err.code === "SQLITE_ERROR") {
+  if (err instanceof Error && err.code === "SQLITE_ERROR") {
     console.error(err.message);
   } else {
     throw err;
