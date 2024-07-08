@@ -1,9 +1,8 @@
 import sqlite3 from "sqlite3";
+import { createTableQuery, dropTableQuery } from "./query_variables.js";
 import {
-  createTableQuery,
   insertBookErrorQuery,
   selectBookErrorQuery,
-  dropTableQuery,
 } from "./error_query_variables.js";
 
 const db = new sqlite3.Database(":memory:");
