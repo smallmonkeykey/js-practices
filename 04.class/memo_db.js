@@ -15,7 +15,7 @@ export default class MemoDataBase {
     });
   }
 
-  async insertMemoBody(memoTitle, memoContent) {
+  async insert(memoTitle, memoContent) {
     const stringMemoContent = memoContent.join("\n");
     await runAsync(this.db, "INSERT INTO memos (title, content) VALUES(?, ?)", [
       memoTitle,
@@ -23,11 +23,11 @@ export default class MemoDataBase {
     ]);
   }
 
-  async deleteMemo(memoId) {
+  async delete(memoId) {
     await runAsync(this.db, `DELETE FROM memos WHERE id = ${memoId}`);
   }
 
-  async getAllMemos() {
+  async getAll() {
     const rows = await allAsync(this.db, "SELECT * FROM memos");
     return rows;
   }

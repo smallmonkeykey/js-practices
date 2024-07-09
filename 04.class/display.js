@@ -56,6 +56,6 @@ export default class Display {
 
     const memoId = Object.values(response.memoTitle)[0];
     const memoDataBase = new MemoDataBase();
-    await memoDataBase.deleteMemo(memoId);
+    await memoDataBase.delete(memoId);
   }
 }

@@ -12,19 +12,19 @@ async function main() {
     const memoContent = await receivedStdin.convertInputAsync();
     const memoTitle = memoContent[0];
     const memoDataBase = await new MemoDataBase();
-    await memoDataBase.insertMemoBody(memoTitle, memoContent);
+    await memoDataBase.insert(memoTitle, memoContent);
   }
 
   if (option === "-l") {
     const memoDataBase = await new MemoDataBase();
-    const allMemos = await memoDataBase.getAllMemos();
+    const allMemos = await memoDataBase.getAll();
     const displayingMemo = await new Display(allMemos);
     displayingMemo.displayMemoTitleList();
   }
 
   if (option === "-r") {
     const memoDataBase = await new MemoDataBase();
-    const allMemos = await memoDataBase.getAllMemos();
+    const allMemos = await memoDataBase.getAll();
 
     if (Object.keys(allMemos).length === 0) {
       console.log("メモを入力してください");
@@ -36,7 +36,7 @@ async function main() {
 
   if (option === "-d") {
     const memoDataBase = await new MemoDataBase();
-    const allMemos = await memoDataBase.getAllMemos();
+    const allMemos = await memoDataBase.getAll();
 
     if (Object.keys(allMemos).length === 0) {
       console.log("メモを入力してください");
