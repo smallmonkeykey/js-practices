@@ -31,11 +31,4 @@ export default class MemoDataBase {
     const rows = await allAsync(this.db, "SELECT * FROM memos");
     return rows;
   }
-
-  async getTitle() {
-    const rows = await allAsync(this.db, "SELECT title FROM memos");
-    rows.forEach((row) => {
-      console.log(`title: ${row.title}`);
-    });
-  }
 }
