@@ -32,7 +32,7 @@ export default class MemoDataBase {
     return rows;
   }
 
-  runAsync(db, sql, values) {
+  #runAsync(db, sql, values) {
     return new Promise((resolve, reject) => {
       db.run(sql, values, function (err) {
         if (err) {
@@ -44,7 +44,7 @@ export default class MemoDataBase {
     });
   }
 
-  allAsync(db, sql) {
+  #allAsync(db, sql) {
     return new Promise((resolve, reject) => {
       db.all(sql, (err, rows) => {
         if (err) {
@@ -56,7 +56,7 @@ export default class MemoDataBase {
     });
   }
 
-  closeAsync(db) {
+  #closeAsync(db) {
     return new Promise((resolve, reject) => {
       db.close((err) => {
         if (err) {
