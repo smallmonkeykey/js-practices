@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import ReceiveStdin from "./ memo_stdin.js";
+import ReceiveStdin from "./receive_stdin.js";
 import MemoDataBase from "./memo_db.js";
-import Display from "./memo_display.js";
+import Display from "./display.js";
 
 async function main() {
   const receivedStdin = new ReceiveStdin();
