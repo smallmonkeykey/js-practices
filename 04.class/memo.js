@@ -34,7 +34,7 @@ async function main() {
     }
   }
 
-  if (option == "-d") {
+  if (option === "-d") {
     const memoDataBase = await new MemoDataBase();
     const allMemos = await memoDataBase.getAllMemos();
 
