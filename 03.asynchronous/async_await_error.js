@@ -1,9 +1,10 @@
 import sqlite3 from "sqlite3";
-import { createTableQuery, dropTableQuery } from "./query_variables.js";
 import {
+  createTableQuery,
   insertBookErrorQuery,
   selectBookErrorQuery,
-} from "./error_query_variables.js";
+  dropTableQuery,
+} from "./query_variables.js";
 import { runAsync, allAsync, closeAsync } from "./db_async_functions.js";
 
 const db = new sqlite3.Database(":memory:");
