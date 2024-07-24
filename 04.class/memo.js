@@ -2,7 +2,9 @@
 
 import ReceiveStdin from "./receive_stdin.js";
 import MemoDataBase from "./memo_db.js";
-import Display from "./display.js";
+import ListCommand from "./listCommand.js";
+import ReferCommand from "./referCommand.js";
+import DeleteCommand from "./deleteCommand.js";
 
 async function main() {
   const receivedStdin = new ReceiveStdin();
@@ -18,7 +20,7 @@ async function main() {
   if (option === "-l") {
     const memoDataBase = await new MemoDataBase();
     const allMemos = await memoDataBase.getAll();
-    const displayingMemo = await new Display(allMemos);
+    const displayingMemo = await new ListCommand(allMemos);
     displayingMemo.displayMemoTitleList();
   }
 
@@ -29,7 +31,7 @@ async function main() {
     if (Object.keys(allMemos).length === 0) {
       console.log("メモを入力してください");
     } else {
-      const displayingMemo = await new Display(allMemos);
+      const displayingMemo = await new ReferCommand(allMemos);
       displayingMemo.referMemos();
     }
   }
@@ -41,8 +43,8 @@ async function main() {
     if (Object.keys(allMemos).length === 0) {
       console.log("メモを入力してください");
     } else {
-      const displayingMemo = await new Display(allMemos);
-      displayingMemo.deleteMemos();
+      const deletingMemo = await new DeleteCommand(allMemos);
+      deletingMemo.deleteMemos();
     }
   }
 }

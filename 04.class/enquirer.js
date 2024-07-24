@@ -1,0 +1,17 @@
+import pkg from "enquirer";
+const { prompt } = pkg;
+
+export default class Enquirer {
+  async selectMemo(memos, action) {
+    const response = await prompt({
+      type: "select",
+      name: "memoTitle",
+      message: `Choose a memo you want to ${action}:`,
+      choices: memos,
+      result(names) {
+        return this.map(names);
+      },
+    });
+    return Object.values(response.memoTitle)[0];
+  }
+}

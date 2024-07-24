@@ -1,6 +1,4 @@
 import sqlite3 from "sqlite3";
-import { runAsync, allAsync } from "./memo_db_async_function.js";
-
 export default class MemoDataBase {
   constructor() {
     this.db = new sqlite3.Database("./memo.db");
@@ -17,18 +15,19 @@ export default class MemoDataBase {
 
   async insert(memoTitle, memoContent) {
     const stringMemoContent = memoContent.join("\n");
-    await runAsync(this.db, "INSERT INTO memos (title, content) VALUES(?, ?)", [
-      memoTitle,
-      stringMemoContent,
-    ]);
+    await this.#runAsync(
+      this.db,
+      "INSERT INTO memos (title, content) VALUES(?, ?)",
+      [memoTitle, stringMemoContent],
+    );
   }
 
   async delete(memoId) {
-    await runAsync(this.db, `DELETE FROM memos WHERE id = ${memoId}`);
+    await this.#runAsync(this.db, `DELETE FROM memos WHERE id = ${memoId}`);
   }
 
   async getAll() {
-    const rows = await allAsync(this.db, "SELECT * FROM memos");
+    const rows = await this.#allAsync(this.db, "SELECT * FROM memos");
     return rows;
   }
 
@@ -51,18 +50,6 @@ export default class MemoDataBase {
           reject(err);
         } else {
           resolve(rows);
-        }
-      });
-    });
-  }
-
-  #closeAsync(db) {
-    return new Promise((resolve, reject) => {
-      db.close((err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
         }
       });
     });
