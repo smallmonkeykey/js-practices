@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import ReceiveStdin from "./receive_stdin.js";
+import ReceiveStdin from "./receiveStdin.js";
 import Memo from "./memoApp.js";
 
 const receivedStdin = new ReceiveStdin();

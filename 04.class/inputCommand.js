@@ -1,5 +1,5 @@
-import ReceiveStdin from "./receive_stdin.js";
-import MemoDataBase from "./memo_db.js";
+import ReceiveStdin from "./receiveStdin.js";
+import MemoDataBase from "./memoDB.js";
 
 export default class InputCommand {
   async inputMemo() {

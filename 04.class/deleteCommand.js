@@ -1,5 +1,5 @@
 import Enquirer from "./enquirer.js";
-import MemoDataBase from "./memo_db.js";
+import MemoDataBase from "./memoDB.js";
 
 export default class DeleteCommand {
   constructor(allMemos) {

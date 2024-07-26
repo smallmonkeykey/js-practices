@@ -1,4 +1,4 @@
-import MemoDataBase from "./memo_db.js";
+import MemoDataBase from "./memoDB.js";
 import InputCommand from "./inputCommand.js";
 import ListCommand from "./listCommand.js";
 import ReferCommand from "./referCommand.js";
