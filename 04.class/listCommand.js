@@ -4,7 +4,7 @@ export default class ListCommand {
     this.memoTitles = allMemos.map((memoDate) => memoDate.title);
   }
 
-  displayMemoTitleList() {
+  listMemos() {
     this.allMemos.forEach((row) => {
       console.log(`${row.title}`);
     });
