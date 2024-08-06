@@ -18,7 +18,7 @@ export default class MemoApp {
         break;
       }
       case "-l": {
-        this.listMemos(allMemos);
+        this.list(allMemos);
         break;
       }
       case "-r": {
@@ -47,7 +47,7 @@ export default class MemoApp {
     await memoDataBase.insert(memoTitle, memoContent);
   }
 
-  listMemos(allMemos) {
+  list(allMemos) {
     allMemos.forEach((row) => {
       console.log(`${row.title}`);
     });
