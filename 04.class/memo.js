@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import Memo from "./memo2.js";
+import MemoApp from "./memoApp.js";
 
 (async () => {
-  const memo2 = new Memo();
-  await memo2.run();
+  const memoApp = new MemoApp();
+  await memoApp.run();
 })();
