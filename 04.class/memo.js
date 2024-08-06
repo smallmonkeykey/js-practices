@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-import ReceiveStdin from "./receiveStdin.js";
-import MemoApp from "./memoApp.js";
+import Memo from "./memo2.js";
 
-const receivedStdin = new ReceiveStdin();
-const option = receivedStdin.getOption();
-
-const memoApp = new MemoApp(option);
-memoApp.run();
+(async () => {
+  const memo2 = new Memo();
+  await memo2.run();
+})();
