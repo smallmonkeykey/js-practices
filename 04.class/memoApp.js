@@ -62,8 +62,8 @@ export default class MemoApp {
       };
     });
 
-    const enquirer = new Enquirer();
-    const result = await enquirer.selectMemo(allMemosChangedKeyName, "action");
+    const enquirer = new Enquirer(allMemosChangedKeyName);
+    const result = await enquirer.selectMemo("action");
     console.log(result);
   }
 
@@ -75,11 +75,8 @@ export default class MemoApp {
       };
     });
 
-    const enquirer = new Enquirer();
-    const id = await enquirer.selectMemo(
-      allMemosChangedKeyNameWithoutId,
-      "delete",
-    );
+    const enquirer = new Enquirer(allMemosChangedKeyNameWithoutId);
+    const id = await enquirer.selectMemo("delete");
     const memoDataBase = new MemoDataBase("./memo.db");
     await memoDataBase.delete(id);
   }

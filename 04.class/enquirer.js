@@ -2,12 +2,16 @@ import pkg from "enquirer";
 const { prompt } = pkg;
 
 export default class Enquirer {
-  async selectMemo(memos, action) {
+  constructor(memos) {
+    this.memos = memos;
+  }
+
+  async selectMemo(action) {
     const response = await prompt({
       type: "select",
       name: "title",
       message: `Choose a memo you want to ${action}:`,
-      choices: memos,
+      choices: this.memos,
       result(names) {
         return this.map(names);
       },
