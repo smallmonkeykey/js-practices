@@ -9,7 +9,7 @@ export default class MemoApp {
   }
 
   async run() {
-    const memoDataBase = new MemoDataBase();
+    const memoDataBase = new MemoDataBase("./memo.db");
     const allMemos = await memoDataBase.getAll();
 
     switch (this.option) {
@@ -43,7 +43,7 @@ export default class MemoApp {
   async input() {
     const memoContent = await convertInputAsync();
     const memoTitle = memoContent[0];
-    const memoDataBase = await new MemoDataBase();
+    const memoDataBase = await new MemoDataBase("./memo.db");
     await memoDataBase.insert(memoTitle, memoContent);
   }
 
@@ -80,7 +80,7 @@ export default class MemoApp {
       allMemosChangedKeyNameWithoutId,
       "delete",
     );
-    const memoDataBase = new MemoDataBase();
+    const memoDataBase = new MemoDataBase("./memo.db");
     await memoDataBase.delete(memoId);
   }
 }

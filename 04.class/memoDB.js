@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
 export default class MemoDataBase {
-  constructor() {
-    this.db = new sqlite3.Database("./memo.db");
+  constructor(filePath) {
+    this.db = new sqlite3.Database(filePath);
 
     this.db.serialize(() => {
       this.db.run(
