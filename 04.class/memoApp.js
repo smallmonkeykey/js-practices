@@ -41,10 +41,10 @@ export default class MemoApp {
   }
 
   async input() {
-    const memoContent = await convertInputAsync();
-    const memoTitle = memoContent[0];
+    const content = await convertInputAsync();
+    const title = content[0];
     const memoDataBase = await new MemoDataBase("./memo.db");
-    await memoDataBase.insert(memoTitle, memoContent);
+    await memoDataBase.insert(title, content);
   }
 
   list(allMemos) {
@@ -76,11 +76,11 @@ export default class MemoApp {
     });
 
     const enquirer = new Enquirer();
-    const memoId = await enquirer.selectMemo(
+    const id = await enquirer.selectMemo(
       allMemosChangedKeyNameWithoutId,
       "delete",
     );
     const memoDataBase = new MemoDataBase("./memo.db");
-    await memoDataBase.delete(memoId);
+    await memoDataBase.delete(id);
   }
 }

@@ -13,17 +13,17 @@ export default class MemoDataBase {
     });
   }
 
-  async insert(memoTitle, memoContent) {
-    const stringMemoContent = memoContent.join("\n");
+  async insert(title, content) {
+    const stringContent = content.join("\n");
     await this.#runAsync(
       this.db,
       "INSERT INTO memos (title, content) VALUES(?, ?)",
-      [memoTitle, stringMemoContent],
+      [title, stringContent],
     );
   }
 
-  async delete(memoId) {
-    await this.#runAsync(this.db, `DELETE FROM memos WHERE id = ${memoId}`);
+  async delete(id) {
+    await this.#runAsync(this.db, `DELETE FROM memos WHERE id = ${id}`);
   }
 
   async getAll() {
