@@ -27,7 +27,10 @@ export default class MemoDataBase {
   }
 
   async getAll() {
-    const rows = await this.#allAsync(this.db, "SELECT * FROM memos");
+    const rows = await this.#allAsync(
+      this.db,
+      "SELECT * FROM memos ORDER BY id ASC",
+    );
     return rows;
   }
 
