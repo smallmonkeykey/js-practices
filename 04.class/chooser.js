@@ -1,7 +1,7 @@
 import pkg from "enquirer";
 const { prompt } = pkg;
 
-export default class Enquirer {
+export default class Chooser {
   constructor(memos) {
     this.memos = memos;
   }

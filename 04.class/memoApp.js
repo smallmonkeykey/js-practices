@@ -1,5 +1,5 @@
 import MemoDataBase from "./memoDB.js";
-import Enquirer from "./enquirer.js";
+import Chooser from "./chooser.js";
 import { getOption, convertInputAsync } from "./stdin.js";
 
 export default class MemoApp {
@@ -62,8 +62,8 @@ export default class MemoApp {
       };
     });
 
-    const enquirer = new Enquirer(allMemosChangedKeyName);
-    const result = await enquirer.selectMemo("action");
+    const chooser = new Chooser(allMemosChangedKeyName);
+    const result = await chooser.selectMemo("action");
     console.log(result);
   }
 
@@ -75,8 +75,8 @@ export default class MemoApp {
       };
     });
 
-    const enquirer = new Enquirer(allMemosChangedKeyNameWithoutId);
-    const id = await enquirer.selectMemo("delete");
+    const chooser = new Chooser(allMemosChangedKeyNameWithoutId);
+    const id = await chooser.selectMemo("delete");
     const memoDataBase = new MemoDataBase("./memo.db");
     await memoDataBase.delete(id);
   }
