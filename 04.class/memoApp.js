@@ -54,7 +54,7 @@ export default class MemoApp {
   }
 
   async refer(memos) {
-    const modifiedMemos = memos.map((item) => {
+    const selectableMemos = memos.map((item) => {
       return {
         id: item.id,
         name: item.title,
@@ -62,21 +62,20 @@ export default class MemoApp {
       };
     });
 
-    const chooser = new Chooser(modifiedMemos);
+    const chooser = new Chooser(selectableMemos);
     const result = await chooser.selectMemo("action");
     console.log(result);
   }
 
   async delete(memos) {
-    const modifiedMemos = memos.map((item) => {
+    const selectableMemos = memos.map((item) => {
       return {
-        id: item.id,
         name: item.title,
         value: item.id,
       };
     });
 
-    const chooser = new Chooser(modifiedMemos);
+    const chooser = new Chooser(selectableMemos);
     const id = await chooser.selectMemo("delete");
     const memoDataBase = new MemoDataBase("./memo.db");
     await memoDataBase.delete(id);
