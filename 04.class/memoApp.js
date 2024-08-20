@@ -10,7 +10,7 @@ export default class MemoApp {
 
   async run() {
     const memoDataBase = new MemoDataBase("./memo.db");
-    const allMemos = await memoDataBase.getAll();
+    const memos = await memoDataBase.getAll();
 
     switch (this.option) {
       case undefined: {
@@ -18,22 +18,22 @@ export default class MemoApp {
         break;
       }
       case "-l": {
-        this.list(allMemos);
+        this.list(memos);
         break;
       }
       case "-r": {
-        if (Object.keys(allMemos).length === 0) {
+        if (Object.keys(memos).length === 0) {
           console.log("メモを入力してください");
         } else {
-          await this.refer(allMemos);
+          await this.refer(memos);
         }
         break;
       }
       case "-d": {
-        if (Object.keys(allMemos).length === 0) {
+        if (Object.keys(memos).length === 0) {
           console.log("メモを入力してください");
         } else {
-          await this.delete(allMemos);
+          await this.delete(memos);
         }
         break;
       }
@@ -47,14 +47,14 @@ export default class MemoApp {
     await memoDataBase.insert(title, content);
   }
 
-  list(allMemos) {
-    allMemos.forEach((row) => {
+  list(memos) {
+    memos.forEach((row) => {
       console.log(`${row.title}`);
     });
   }
 
-  async refer(allMemos) {
-    const allMemosChangedKeyName = allMemos.map((item) => {
+  async refer(memos) {
+    const modifiedMemos = memos.map((item) => {
       return {
         id: item.id,
         name: item.title,
@@ -62,20 +62,21 @@ export default class MemoApp {
       };
     });
 
-    const chooser = new Chooser(allMemosChangedKeyName);
+    const chooser = new Chooser(modifiedMemos);
     const result = await chooser.selectMemo("action");
     console.log(result);
   }
 
-  async delete(allMemos) {
-    const allMemosChangedKeyNameWithoutId = allMemos.map((item) => {
+  async delete(memos) {
+    const modifiedMemos = memos.map((item) => {
       return {
+        id: item.id,
         name: item.title,
         value: item.id,
       };
     });
 
-    const chooser = new Chooser(allMemosChangedKeyNameWithoutId);
+    const chooser = new Chooser(modifiedMemos);
     const id = await chooser.selectMemo("delete");
     const memoDataBase = new MemoDataBase("./memo.db");
     await memoDataBase.delete(id);
